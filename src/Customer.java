@@ -15,16 +15,14 @@ public class Customer implements Runnable {
         this.orderQueue = orderQueue;
     }
 
-
-
     @Override
     public void run() {
         try {
             while (true) {
                 Order order = new Order();
                 System.out.println(PURPLE_BOLD + "Customer " + ANSI_RESET + ANSI_YELLOW + customerId + " is placing an order." + ANSI_RESET);
-                orderQueue.put(order);
                 System.out.println(PURPLE_BOLD + "Customer " + ANSI_RESET + ANSI_GREEN + customerId + " has placed order: " + order.getOrderId() + ANSI_RESET);
+                orderQueue.put(order);
                 Thread.sleep((long) (Math.random() * 3000));
             }
         } catch (InterruptedException e) {
